@@ -15,11 +15,15 @@
 #
 class utils (
   $packages = 'UNSET',
+  $adminfile = undef,
+  $provider = undef,
 ) {
-
-  if $packages != 'UNSET' {
-    package { $packages:
-      ensure => present,
-    }
-  }
+       if $packages != 'UNSET' {
+         package { $packages:
+            ensure    => present,
+            adminfile => $adminfile,
+            provider  => $provider,
+         }
+       }
 }
+
